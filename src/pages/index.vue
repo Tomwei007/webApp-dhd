@@ -109,6 +109,11 @@ import { cookie } from 'vux'
       getUrl(){
         let mobile=cookie.get('p');
         if(mobile){
+          //请求借款状态
+          //没有借款跳转借款页面
+          //有借款进入借款状态页面，提现，还款、逾期
+
+
           this.$router.push('/borrowMoney');
         }else{
           this.$router.push('/login');

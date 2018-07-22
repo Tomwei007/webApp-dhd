@@ -98,37 +98,34 @@ export default {
     save() {
       //this.$router.push('/auditWaiting');
       //获取个人信息
-      this.$http.get('/api/auth/user/status').then(
+      this.$http.post('/api/jhk/order/loanApply', {
+        loan: this.loan,
+        days: this.days,
+        usedFor: this.usedFor
+      }).then(
         rep => {
+          console.log(rep.data);
           if (rep.data.code == 0) {
-            //console.log(rep.data);
-            let data = rep.data.detail;
-            if (data.base_status == 0 || data.contact_status == 0 || data.job_status == 0 || data.isupload == 0) {
-              localStorage.loan=this.loan;
-              localStorage.days=this.days;
-              localStorage.usedFor=this.usedFor;
-              this.$router.push({
-                path:'/myInfo'
-              })
-            } else {
-              this.$http.post('/api/jhk/order/loanApply', {
-                loan: this.loan,
-                days: this.days,
-                usedFor: this.usedFor
-              }).then(
-                rep => {
-                  console.log(rep.data);
-                  if(rep.data.code==0){
-                    this.$router.push('/auditWaiting');
+            //this.$router.push('/auditWaiting');
+            this.$http.get('/api/user/auth').then(
+              rep => {
+                if (rep.data.code == 0) {
+                  //console.log(rep.data);
+                  let data = rep.data.detail;
+                  console.log(data)
+                  if(data.ID==0){
+                    this.$router.push('/uploadIdCard');
                   }else{
-                    this.$vux.toast.show({
-                      text:rep.data.msg,
-                      type:'text'
-                    })
+                    this.$router.push('/shenhe');
                   }
+                } else {
+                  this.$vux.toast.show({
+                    text: rep.data.msg,
+                    type: 'text'
+                  })
                 }
-              )
-            }
+              }
+            )
           } else {
             this.$vux.toast.show({
               text: rep.data.msg,
@@ -137,6 +134,12 @@ export default {
           }
         }
       )
+
+
+
+      // this.$http.get('/api/auth/user/status').then(
+
+      // )
     },
     getMoney() {
       this.$http.post('/api/jhk/order/computeInterest', {

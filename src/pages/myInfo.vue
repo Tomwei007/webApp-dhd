@@ -8,14 +8,6 @@
   </header>
   <div class="page content-pd">
     <ul class="aui-list aui-list-in">
-      <li class="aui-list-item aui-list-item-middle" v-if="isupload==0">
-        <router-link class="aui-list-item-inner aui-list-item-arrow" to="/uploadIdcard">
-          <div class="aui-list-item-title">身份证信息</div>
-          <div class="aui-list-item-right">
-            <span>去完善</span>
-          </div>
-        </router-link>
-      </li>
       <li class="aui-list-item aui-list-item-middle">
         <router-link class="aui-list-item-inner aui-list-item-arrow" to="/baseInfo">
           <div class="aui-list-item-title">基本信息</div>
@@ -44,7 +36,7 @@
         </router-link>
       </li>
     </ul>
-    <div class="btn-group" v-if="btn">
+    <div class="btn-group">
       <div class="aui-btn aui-btn-block aui-btn-primary" @click="save()">提交</div>
     </div>
   </div>
@@ -76,27 +68,17 @@ export default {
         }
       }
     )
-    //查看下是否能够借款
-    if (localStorage.loan && localStorage.days && localStorage.usedFor) {
-      this.btn = true;
-    }
-
-
   },
   methods: {
     save() {
       //console.log(this.$route.params);
-      if (this.base_status == 1 && this.contact_status == 1 && this.job_status == 1 && this.isupload == 1) {
-        this.$http.post('/api/jhk/order/loanApply', {
-          loan: localStorage.loan,
-          days: localStorage.days,
-          usedFor: localStorage.usedFor
-        }).then(
+      if (this.base_status == 1 && this.contact_status == 1 && this.job_status == 1) {
+        this.$http.post('/api/auth/user/submit', {}).then(
           rep => {
             console.log(rep.data);
             if (rep.data.code == 0) {
-              this.$router.push('/auditWaiting');
-              localStorage.clear();//清除本地存储
+              this.$router.push('/shenhe');
+              //localStorage.clear();//清除本地存储
             } else {
               this.$vux.toast.show({
                 text: rep.data.msg,

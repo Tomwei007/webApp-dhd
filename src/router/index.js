@@ -151,6 +151,22 @@ export default new Router({
       meta:{
         index:2
       }
+    },
+    {
+      path:'/sfzInfo',
+      name:'sfzInfo',
+      component: require('../pages/sfzInfo').default,
+      meta:{
+        index:2
+      }
+    },
+    {
+      path:'/shenhe',
+      name:'shenhe',
+      component: require('../pages/shenhe').default,
+      meta:{
+        index:2
+      }
     }
 
   ]
