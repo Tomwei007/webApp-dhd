@@ -112,9 +112,26 @@ import { cookie } from 'vux'
           //请求借款状态
           //没有借款跳转借款页面
           //有借款进入借款状态页面，提现，还款、逾期
-
-
-          this.$router.push('/borrowMoney');
+          this.$http.get('/api/jhk/user/info').then(
+            rep => {
+              console.log(rep.data);
+              if(rep.data.code==0){
+                //if(rep.data.)
+                // let status=rep.data.detail.auth_status;
+                // localStorage.status=JSON.stringify(rep.data.detail);
+                // if(status==0){
+                //   this.$router.push('/borrowMoney');
+                // }else if(status==3){
+                //   this.$router.push('/auditWaiting');
+                // }else if (status==4) {
+                //   this.$router.push('/refuse');
+                // }else if (status==5) {
+                //   this.$router.push('/withdrawal');
+                // }
+              }
+            }
+          )
+          //
         }else{
           this.$router.push('/login');
         }

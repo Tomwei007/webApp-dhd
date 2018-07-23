@@ -14,11 +14,6 @@
     </div>
   </div>
   <ul class="aui-list aui-list-in">
-    <li class="aui-list-item aui-list-item-middle" @click="getUrl('user')">
-      <div class="aui-list-item-inner aui-list-item-arrow">
-        <div class="aui-list-item-title">个人信息</div>
-      </div>
-    </li>
     <li class="aui-list-item" @click="getUrl('card')">
       <div class="aui-list-item-inner aui-list-item-arrow">
         <div class="aui-list-item-title">银行卡</div>

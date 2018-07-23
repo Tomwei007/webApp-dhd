@@ -82,7 +82,7 @@ export default {
   },
   mounted() {
     //获取银行列表数据
-    this.$http.post('/api/user/bank/alls',{}).then(
+    this.$http.get('/api/jhk/user/bank/alls',{}).then(
       rep => {
         console.log(rep.data);
         this.banklists=rep.data;

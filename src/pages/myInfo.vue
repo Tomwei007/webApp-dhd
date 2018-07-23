@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <header class="aui-bar aui-bar-nav aui-bar-light">
-    <router-link class="aui-pull-left aui-btn" to="/my">
+    <router-link class="aui-pull-left aui-btn" to="/shenhe">
       <span class="aui-iconfont aui-icon-left"></span>
     </router-link>
     <div class="aui-title">个人信息</div>
@@ -73,7 +73,7 @@ export default {
     save() {
       //console.log(this.$route.params);
       if (this.base_status == 1 && this.contact_status == 1 && this.job_status == 1) {
-        this.$http.post('/api/auth/user/submit', {}).then(
+        this.$http.post('/api/auth/user/submit').then(
           rep => {
             console.log(rep.data);
             if (rep.data.code == 0) {

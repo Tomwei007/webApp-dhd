@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <header class="aui-bar aui-bar-nav aui-bar-light">
-    <router-link class="aui-pull-left aui-btn" to="/borrowMoney">
+    <router-link class="aui-pull-left aui-btn" to="/index">
       <span class="aui-iconfont aui-icon-left"></span>
     </router-link>
     <div class="aui-title">资金审核</div>
@@ -38,7 +38,9 @@ export default {
 
     }
   },
-  mounted() {},
+  mounted() {
+    //设置定时器
+  },
   components: {},
   methods: {
 

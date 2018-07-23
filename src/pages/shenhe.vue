@@ -14,7 +14,7 @@
         <p>未认证</p>
       </div>
     </div>
-    <div class="box clearfix" v-else>
+    <div class="box clearfix" @click="goProfile()" v-else>
       <img src="../assets/img/ic_personal_s.png" alt="">
       <div class="txt">
         <p>个人信息</p>
@@ -50,19 +50,18 @@ export default {
         }
       }
     )
-    this.$http.get('/api/jhk/user/info').then(
-      rep => {
-        console.log(rep.data);
-      }
-    )
-
+    // this.$http.get('/api/jhk/user/info').then(
+    //   rep => {
+    //     console.log(rep.data);
+    //   }
+    // )
   },
   components:{},
   methods:{
     save(){
       this.$http.post('/api/user/audit').then(
         rep => {
-          console.log(rep.data);
+          //console.log(rep.data);
           if(rep.data.code==0){
             this.$router.push('/auditWaiting');
           }else{

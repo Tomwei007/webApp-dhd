@@ -167,6 +167,38 @@ export default new Router({
       meta:{
         index:2
       }
+    },
+    {
+      path:'/moneyToCard',
+      name:'moneyToCard',
+      component: require('../pages/moneyToCard').default,
+      meta:{
+        index:2
+      }
+    },
+    {
+      path:'/hetong',
+      name:'hetong',
+      component: require('../pages/hetong').default,
+      meta:{
+        index:2
+      }
+    },
+    {
+      path:'/success',
+      name:'success',
+      component: require('../pages/success').default,
+      meta:{
+        index:2
+      }
+    },
+    {
+      path:'/error',
+      name:'error',
+      component: require('../pages/error').default,
+      meta:{
+        index:2
+      }
     }
 
   ]

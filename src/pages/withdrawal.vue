@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <header class="aui-bar aui-bar-nav aui-bar-light">
-    <router-link class="aui-pull-left aui-btn" to="/borrowMoney">
+    <router-link class="aui-pull-left aui-btn" to="/index">
       <span class="aui-iconfont aui-icon-left"></span>
     </router-link>
     <div class="aui-title">资金审核</div>
@@ -13,11 +13,11 @@
     <div class="form">
       <div class="form-control clearfix bt">
         <label>授信金额</label>
-        <input type="text" name="" value="">
+        <input type="text" name="" value="" v-model="money">
       </div>
       <div class="form-control clearfix">
         <label>借款期限</label>
-        <input type="text" name="" value="">
+        <input type="text" name="" value="" v-model="days">
       </div>
     </div>
     <div class="btn-group">
@@ -31,13 +31,39 @@
 export default {
   data(){
     return{
-
+      money:'',
+      days:''
     }
   },
-  mounted(){},
+  mounted(){
+    this.$http.get('/api/jhk/user/info').then(
+      rep => {
+        //console.log(rep.data);
+        if(rep.data.code==0){
+          //if(rep.data.)
+          let data=rep.data.detail;
+          console.log(data);
+          this.money=data.left_quota/100;
+          this.days=data.appro_init_term;
+        }
+      }
+    )
+
+  },
   components:{},
   methods:{
-
+    save(){
+      this.$http.get('/api/jhk/order/signing').then(
+        rep => {
+          console.log(rep.data);
+          if(rep.data.code==8){
+            this.$router.push('/addCard');
+          }else if (rep.data.code==0) {
+            this.$router.push('/moneyToCard')
+          }
+        }
+      )
+    }
   }
 }
 </script>
