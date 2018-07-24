@@ -6,8 +6,6 @@ import router from './router'
 import VueResource from 'vue-resource'
 import {AlertPlugin, ToastPlugin, LoadingPlugin, DatetimePlugin} from 'vux'
 
-import '../static/aui/css/aui.css'
-
 Vue.use(AlertPlugin)
 Vue.use(ToastPlugin)
 Vue.use(LoadingPlugin)

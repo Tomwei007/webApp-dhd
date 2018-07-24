@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import './assets/css/aui.css'
 export default {
   name: 'App',
   data() {
@@ -92,10 +93,10 @@ li {
 
 .btn-dv {
   width: 80%;
-  background: #66B4E8;
-  height: 2rem;
-  border-radius: 2rem;
-  line-height: 2rem;
+  background: #66B4E8 !important;
+  height: 2rem !important;
+  border-radius: 2rem !important;
+  line-height: 2rem !important;
 }
 
 .get-code {
@@ -148,11 +149,11 @@ li {
 } */
 
 .aui-bar-light {
-  color: #333;
+  color: #333 !important;
 }
 
 .aui-bar-nav.aui-bar-light .aui-iconfont {
-  color: #333;
+  color: #333 !important;
 }
 
 /* header {

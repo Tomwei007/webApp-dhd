@@ -13,7 +13,7 @@
     打开微信，扫面下图二维码转账
   </p>
   <p style="width: 5rem;margin: 0 auto;margin-top: 0.5rem;">
-    <img src="../assets/img/code_wechat.png" />
+    <img src="../assets/img/code_wechat.png" @click="show()"/>
   </p>
   <p style="margin-top: 0.5rem;text-align: center;font-size: 0.7rem;color: #999;">
     转账成功后，请务必通知客服：<br/>
@@ -22,19 +22,43 @@
   <div class="btn-group">
     <div class="aui-btn aui-btn-block aui-btn-primary" @click="goBack()">完成</div>
   </div>
+  <div v-transfer-dom>
+    <previewer :list="list" ref="previewer" :options="options" @on-index-change="logIndexChange"></previewer>
+  </div>
 </div>
 </template>
 
 <script>
+import { Previewer,TransferDom } from 'vux'
 export default {
   data(){
-    return{}
+    return{
+      list:[{
+        src:'static/img/code_wechat.png'
+      }],
+      options:{
+
+      }
+    }
+  },
+  directives: {
+    TransferDom
   },
   methods:{
     goBack(){
       this.$router.go(-1);
+    },
+    show(){
+      this.$refs.previewer.show(0)
+    },
+    logIndexChange(){
+
     }
+  },
+  components: {
+    Previewer
   }
+
 }
 </script>
 
