@@ -1,9 +1,9 @@
 <template>
 <div class="container">
   <header class="aui-bar aui-bar-nav aui-bar-light">
-    <router-link class="aui-pull-left aui-btn" to="/bankList">
+    <div class="aui-pull-left aui-btn" @click="goBack()">
       <span class="aui-iconfont aui-icon-left"></span>
-    </router-link>
+    </div>
     <div class="aui-title">添加银行卡</div>
   </header>
   <ul class="aui-list aui-form-list">
@@ -23,14 +23,43 @@
           开户行
         </div>
         <div class="aui-list-item-input">
-          <select name="bank" class="bank-list" v-model="formData.bank">
+          <select name="bank" class="bank-list" v-model="formData.bankCode">
           	<option value="">--请选择--</option>
-            <option :value="item" v-for="item in banklists">{{item.name}}</option>
+            <option :value="item.code" v-for="item in banklists">{{item.name}}</option>
           </select>
         </div>
       </div>
     </li>
-
+    <li class="aui-list-item">
+      <div class="aui-list-item-inner">
+        <div class="aui-list-item-label">
+          开户省
+        </div>
+        <div class="aui-list-item-input">
+          <input type="text" placeholder="请输入开户省" v-model="formData.bankProvince">
+        </div>
+      </div>
+    </li>
+    <li class="aui-list-item">
+      <div class="aui-list-item-inner">
+        <div class="aui-list-item-label">
+          开户市
+        </div>
+        <div class="aui-list-item-input">
+          <input type="text" placeholder="请输入开户市" v-model="formData.bankCity">
+        </div>
+      </div>
+    </li>
+    <li class="aui-list-item">
+      <div class="aui-list-item-inner">
+        <div class="aui-list-item-label">
+          银行全名
+        </div>
+        <div class="aui-list-item-input">
+          <input type="text" placeholder="请输入银行全名" v-model="formData.bankName">
+        </div>
+      </div>
+    </li>
     <li class="aui-list-item">
       <div class="aui-list-item-inner">
         <div class="aui-list-item-label">
@@ -71,9 +100,12 @@ export default {
   data() {
     return {
       formData:{
-        bank:'',
+        bankCode:'',
         cardNo:'',
-        mobile:''
+        mobile:'',
+        bankName:'',
+        bankProvince:'',
+        bankCity:''
       },
       banklists:[],
       show:true,
@@ -106,20 +138,15 @@ export default {
     // }
     save(){
       //console.log(this.formData);
-      let data=this.formData;
-      this.$http.post('/api/jhk/user/bank',{
-        bankCode:data.bank.code,
-        mobile:data.mobile,
-        cardNo:data.cardNo,
-        regionName:data.bank.name
-      }).then(
+      //let data=this.formData;
+      this.$http.post('/api/jhk/user/bank',this.formData).then(
         rep => {
           if(rep.data.code==0){
             this.$vux.toast.show({
               text:'保存成功！',
               type:'success'
             })
-            this.$router.push('/bankList');
+            this.$router.go(-1);
           }else{
             this.$vux.toast.show({
               text:rep.data.msg,
@@ -129,8 +156,10 @@ export default {
 
         }
       )
+    },
+    goBack(){
+      this.$router.go(-1);
     }
-
   }
 }
 </script>

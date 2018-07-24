@@ -4,11 +4,17 @@
     <router-link class="aui-pull-left aui-btn" to="/moneyToCard">
         <span class="aui-iconfont aui-icon-left"></span>
     </router-link >
-    <div class="aui-title">设置支付密码</div>
+    <div class="aui-title">支付密码</div>
   </header>
   <div class="content content-pd">
-    <p style="margin:2rem 0;text-align:center;font-size:0.8rem;">
+    <p style="margin:2rem 0;text-align:center;font-size:0.8rem;" v-if="qshow">
       设置6位数字支付密码
+    </p>
+    <p style="margin:2rem 0;text-align:center;font-size:0.8rem;" v-if="tshow">
+      再次输入6位数字支付密码
+    </p>
+    <p style="margin:2rem 0;text-align:center;font-size:0.8rem;" v-if="show">
+      请输入6位支付密码
     </p>
     <input type="password" maxlength="6" v-model="pwds"  ref="pwd" style="position: absolute;z-index: -1;left:-100%;opacity: 0"/>
     <ul class="pwd-box clearfix" @click="fouce()" ref="pwdBox">
@@ -53,7 +59,7 @@ export default {
     // setTimeout(function () {
     //   _this.$refs.pwd.focus();
     // }, 2000);
-    let pw=JSON.parse(localStorage.status).has_pay_pwd;
+    let pw=this.$route.params.has_pay_pwd;
     //console.log(pw);
     if(pw){
       this.show=true;
@@ -124,18 +130,19 @@ export default {
         })
       }else{
         this.$http.post('/api/jhk/order/signing',{
-          days:localStorage.days,
-          loan:localStorage.loan,
-          bankId:localStorage.bankId,
+          days:this.$route.params.days,
+          loan:this.$route.params.loan,
+          bankId:this.$route.params.bankId,
           pwd:this.pwds
         }).then(
           rep => {
             console.log(rep.data);
             if(rep.data.code==0){
-              localStorage.clear();
-              this.$router.push('/success');
+              localStorage.order_id=rep.data.detail.id;
+              this.$router.replace('/toBankAudit');
+              //localStorage.order_id='null';
             }else{
-              this.$router.push('/error');
+              this.$router.replace('/error');
             }
           }
         )

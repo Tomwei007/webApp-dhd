@@ -12,6 +12,7 @@
         <div class="count-down" v-else>重新获取<span>{{time}}</span>s</div>
       </div>
       <div class="aui-btn aui-btn-success btn-dv" @click="login()">登录</div>
+
     </div>
   </div>
 </div>
@@ -30,7 +31,9 @@ export default {
       }
     }
   },
-  mounted() {},
+  mounted() {
+    //console.log(this.$route.params.id);
+  },
   methods: {
     getCode() {
       //验证手机号码

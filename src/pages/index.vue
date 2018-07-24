@@ -116,18 +116,25 @@ import { cookie } from 'vux'
             rep => {
               console.log(rep.data);
               if(rep.data.code==0){
-                //if(rep.data.)
-                // let status=rep.data.detail.auth_status;
-                // localStorage.status=JSON.stringify(rep.data.detail);
-                // if(status==0){
-                //   this.$router.push('/borrowMoney');
-                // }else if(status==3){
-                //   this.$router.push('/auditWaiting');
-                // }else if (status==4) {
-                //   this.$router.push('/refuse');
-                // }else if (status==5) {
-                //   this.$router.push('/withdrawal');
-                // }
+                //存储
+                localStorage.userInfo=JSON.stringify(rep.data.detail);
+                let st=rep.data.detail.auth_status;
+                let status=rep.data.detail.status;
+                if(st==0){
+                  this.$router.push('/borrowMoney');
+                }else if(st==3){
+                  this.$router.push('/auditWaiting');
+                }else if (st==4) {
+                  this.$router.push('/refuse');
+                }else if (st==5&&!status.scode) {
+                  this.$router.push('/withdrawal');//带参数过去
+                }else if (st==5&&status.scode==2) {
+                  this.$router.push('/toBankAudit');
+                }else if (st==5&&status.scode==3) {
+                  this.$router.push('/error');
+                }else if (st==5&&status.scode==4) {
+                  this.$router.push('/repayment');
+                }
               }
             }
           )

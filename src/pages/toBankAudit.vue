@@ -8,8 +8,8 @@
   </header>
   <div class="content content-pd">
     <img src="../assets/img/img_waitting.png" />
-    <p>您的资料正在审核中，请耐心等待</p>
-    <p>10分钟内告知结果</p>
+    <p>您的信息正在提交银行审核，请耐心等待</p>
+    <p>30分钟内告知结果</p>
     <div class="status">
       <ul>
         <li class="active"></li>
@@ -17,7 +17,7 @@
         <li :class="{active:isActive}"></li>
         <li></li>
       </ul>
-      <div class="now"></div>
+      <div class="now step2"></div>
     </div>
     <div class="text">
       <ul>
@@ -38,29 +38,27 @@
 export default {
   data() {
     return {
-      isActive:false
+      isActive: true
     }
   },
   mounted() {
+    //设置定时器
   },
   components: {},
   methods: {
     save(){
-      let _this=this;
-      _this.$http.get('/api/jhk/user/info').then(
-        rep => {
-          console.log(rep.data);
-          if(rep.data.code==0){
-            //if(rep.data.)
-            let status=rep.data.detail.auth_status;
-            if(status==5){
-                _this.$router.replace('/withdrawal');
-            }else if(status==3){
-              _this.$vux.toast.show({
-                text:'别着急，还在审核中...',
-                type:'text'
-              })
-            }
+      this.$http.get('/api/jhk/user/info').then(
+        rep =>{
+          let status=rep.data.detail.status;
+          if(status.scode===2){
+            this.$vux.toast.show({
+              text:'别着急，还在审核中...',
+              type:'text'
+            })
+          }else if(status.scode===3){
+            this.$router.replace('/error');
+          }else if(status.scode===4){
+            this.$router.replace('/success');
           }
         }
       )
@@ -70,26 +68,29 @@ export default {
 </script>
 
 <style scoped>
-.content img{
+.content img {
   display: block;
   width: 5rem;
   height: 5rem;
   margin: 2rem auto 1rem;
 }
-.content p{
+
+.content p {
   font-size: 0.8rem;
   color: #666;
   line-height: 1.2rem;
   text-align: center;
 }
-.content .status{
+
+.content .status {
   position: relative;
   width: 70%;
   margin: 1rem auto;
   height: 0.5rem;
   background-color: #ddd;
 }
-.content .status ul li{
+
+.content .status ul li {
   position: absolute;
   top: -0.25rem;
   left: 0rem;
@@ -99,19 +100,24 @@ export default {
   background-color: #ddd;
   border-radius: 50%;
 }
-.content .status ul li:nth-child(2){
+
+.content .status ul li:nth-child(2) {
   left: 33.33%;
 }
-.content .status ul li:nth-child(3){
+
+.content .status ul li:nth-child(3) {
   left: 66.66%;
 }
-.content .status ul li:nth-child(4){
+
+.content .status ul li:nth-child(4) {
   left: 100%;
 }
-.content .status ul li.active{
+
+.content .status ul li.active {
   background-color: #66B4E8;
 }
-.content .status .now{
+
+.content .status .now {
   position: absolute;
   top: 0;
   left: 0;
@@ -120,30 +126,35 @@ export default {
   z-index: 1;
   height: 0.5rem;
 }
-.content .status .now.step2{
+
+.content .status .now.step2 {
   width: 66.66%;
 }
-.content .text{
+
+.content .text {
   position: relative;
   width: 70%;
   margin: 0 auto;
 }
-.content .text ul li{
+
+.content .text ul li {
   position: absolute;
   display: inline-block;
   top: 0;
   left: 0;
   width: 2rem;
-  margin-left:-0.6rem;
-}
-.content .text ul li:nth-child(2){
-  left: 33.33%;
-}
-.content .text ul li:nth-child(3){
-  left: 66.66%;
-}
-.content .text ul li:nth-child(4){
-  left: 100%;
+  margin-left: -0.6rem;
 }
 
+.content .text ul li:nth-child(2) {
+  left: 33.33%;
+}
+
+.content .text ul li:nth-child(3) {
+  left: 66.66%;
+}
+
+.content .text ul li:nth-child(4) {
+  left: 100%;
+}
 </style>

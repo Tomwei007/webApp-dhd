@@ -53,7 +53,7 @@ export default new Router({
       name:'xxhk',
       component: require('../pages/xxhk').default,
       meta:{
-        index:1
+        index:3
       }
     },
     {
@@ -196,6 +196,14 @@ export default new Router({
       path:'/error',
       name:'error',
       component: require('../pages/error').default,
+      meta:{
+        index:2
+      }
+    },
+    {
+      path:'/toBankAudit',
+      name:'toBankAudit',
+      component: require('../pages/toBankAudit').default,
       meta:{
         index:2
       }

@@ -14,15 +14,15 @@
     <div class="form">
       <div class="form-control clearfix bt">
         <label>借款人</label>
-        <input type="text" name="" value="" v-model="info.name">
+        <input type="text" name="" value="" v-model="info.name" readonly>
       </div>
       <div class="form-control clearfix bt">
         <label>借款期限</label>
-        <input type="text" name="" value="" v-model="info.appro_init_term">
+        <input type="text" name="" value="" v-model="info.appro_init_term" readonly>
       </div>
       <div class="form-control clearfix bt">
         <label>到期应还</label>
-        <input type="text" name="" value="" v-model="info.total_repayment/100">
+        <input type="text" name="" value="" v-model="info.total_repayment/100" readonly>
       </div>
       <div class="form-control clearfix bt">
         <label>到账银行卡</label>
@@ -32,11 +32,11 @@
       </div>
       <div class="form-control clearfix bt">
         <label>提现服务费</label>
-        <input type="text" name="" value="" v-model="info.insurance_money/100">
+        <input type="text" name="" value="" v-model="info.insurance_money/100" readonly>
       </div>
       <div class="form-control clearfix">
         <label>实际到账</label>
-        <input type="text" name="" value="" v-model="info.actual_money/100">
+        <input type="text" name="" value="" v-model="info.actual_money/100" readonly>
       </div>
     </div>
     <div class="btn-group">
@@ -63,32 +63,28 @@ export default {
         console.log(rep.data);
         if(rep.data.code==0){
           this.info=rep.data.detail;
+          this.$http.get('/api/jhk/user/bank/all',{}).then(
+            rep => {
+              this.banklists=rep.data.detail.bank_list;
+              this.info.bankId=this.banklists[0].id;
+            }
+          )
         }
       }
     )
-    this.$http.get('/api/jhk/user/bank/all',{}).then(
-      rep => {
-        console.log(rep.data);
-        this.banklists=rep.data.detail.bank_list;
-        console.log(this.banklists[0].id);
-        this.info.bankId=this.banklists[0].id;
-      }
-    )
+
   },
   components:{},
   methods:{
     save(){
-      //判断是否设置密码
-      // let pw=JSON.parse(localStorage.status).has_pay_pwd;
-      // console.log(pw);
-      // if(!pw){
-      //   this.$router.push('/password');
-      // }
-      localStorage.days=this.info.appro_init_term;
-      localStorage.loan=this.info.appro_amount/100;
-      localStorage.bankId=this.info.bankId;
-      this.$router.push({
-        path:'/password'
+      this.$router.replace({
+        name:'password',
+        params:{
+          days:this.info.appro_init_term,
+          loan:this.info.appro_amount/100,
+          bankId:this.info.bankId,
+          has_pay_pwd:this.info.has_pay_pwd
+        }
       });
     }
   }

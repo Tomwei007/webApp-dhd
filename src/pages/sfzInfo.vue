@@ -25,7 +25,7 @@
             身份证号
           </div>
           <div class="aui-list-item-input">
-            <input type="number" placeholder="请输入身份证号" name="idNo" v-model="idNo">
+            <input type="text" placeholder="请输入身份证号" name="idNo" v-model="idNo">
           </div>
         </div>
       </li>
@@ -120,7 +120,7 @@ export default {
                 rep => {
                   if(rep.data.code==0){
                     if(rep.data.detail.profile==0){
-                      this.$router.push('/shenhe');
+                      this.$router.replace('/shenhe');
                     }
                   }
                 }

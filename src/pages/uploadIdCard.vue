@@ -77,7 +77,7 @@ export default {
               //   text: '保存成功！',
               //   type: ''
               // })
-              this.$router.push('/sfzInfo');
+              this.$router.replace('/sfzInfo');
             }
           }
         )

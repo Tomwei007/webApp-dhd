@@ -13,11 +13,11 @@
     <div class="form">
       <div class="form-control clearfix bt">
         <label>授信金额</label>
-        <input type="text" name="" value="" v-model="money">
+        <input type="text" name="" value="" v-model="money" readonly>
       </div>
       <div class="form-control clearfix">
         <label>借款期限</label>
-        <input type="text" name="" value="" v-model="days">
+        <input type="text" name="" value="" v-model="days" readonly>
       </div>
     </div>
     <div class="btn-group">
@@ -48,7 +48,6 @@ export default {
         }
       }
     )
-
   },
   components:{},
   methods:{
@@ -59,7 +58,12 @@ export default {
           if(rep.data.code==8){
             this.$router.push('/addCard');
           }else if (rep.data.code==0) {
-            this.$router.push('/moneyToCard')
+            this.$router.replace('/moneyToCard')
+          }else{
+            this.$vux.toast.show({
+              text:rep.data.msg,
+              type:'text'
+            })
           }
         }
       )

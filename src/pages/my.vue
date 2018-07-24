@@ -62,7 +62,7 @@ export default {
       islogin: false,
       menus: {
         menu1: '工作时间：早10点到晚上7点',
-        menu2: '<a href="tel:4000866833">4000866833</a>'
+        menu2: '<a href="tel:19933011355">19933011355</a>'
       },
       mobile:''
     }

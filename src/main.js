@@ -22,7 +22,7 @@ Vue.http.options.headers = {
 
 Vue.http.interceptors.push(function(request, next) {
   //request.method = 'post';
-  this.$vux.loading.show({text: 'Loading'})
+  this.$vux.loading.show({text: '加载中'})
   next(function(response) {
     this.$vux.loading.hide();
   })
@@ -33,6 +33,7 @@ Vue.config.productionTip = false
 new Vue({el: '#app', router, template: '<App/>', components: {
     App
   }})
+
 //表单非空验证
 Vue.prototype.$formRequired = function() {
   var st = true;

@@ -37,7 +37,7 @@ export default {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  
+
 }
 
 #app {
@@ -231,7 +231,7 @@ li {
 .form .form-control label {
   display: block;
   float: left;
-  width: 30%;
+  width: 40%;
   height: 2.2rem;
   line-height: 2.3rem;
   text-align: center;
@@ -241,7 +241,7 @@ li {
 .form .form-control select,.form .form-control input {
   display: block;
   float: left;
-  width: 70%;
+  width: 40%;
 }
 
 .form .form-control.bt {

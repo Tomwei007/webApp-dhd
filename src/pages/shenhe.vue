@@ -63,7 +63,7 @@ export default {
         rep => {
           //console.log(rep.data);
           if(rep.data.code==0){
-            this.$router.push('/auditWaiting');
+            this.$router.replace('/auditWaiting');
           }else{
             this.$vux.toast.show({
               text:rep.data.msg,
