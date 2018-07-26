@@ -108,7 +108,7 @@ export default {
         })
       } else {
         var data = new FormData(document.getElementById("fileForm"));
-        this.$http.post('/api/auth/userid/update', data).then(
+        this.$http.post('/h5/auth/userid/update', data).then(
           rep => {
             //console.log(rep);
             if (rep.data.code == 0) {
@@ -116,7 +116,7 @@ export default {
                 text: '保存成功！',
                 type: 'success'
               })
-              this.$http.get('/api/user/auth').then(
+              this.$http.get('/h5/user/auth').then(
                 rep => {
                   if(rep.data.code==0){
                     if(rep.data.detail.profile==0){

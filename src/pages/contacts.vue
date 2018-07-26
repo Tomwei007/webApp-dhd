@@ -103,7 +103,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get('/api/auth/user/contact').then(
+    this.$http.get('/h5/auth/user/contact').then(
       rep => {
         console.log(rep.data);
 
@@ -130,7 +130,7 @@ export default {
     save(){
       let res=this.$formRequired();//表单验证
       if(res){
-        this.$http.post('/api/auth/user/contact',this.formData).then(
+        this.$http.post('/h5/auth/user/contact',this.formData).then(
           rep => {
             console.log(rep.data);
             if(rep.data.code==0){

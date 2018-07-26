@@ -112,7 +112,7 @@ import { cookie } from 'vux'
           //请求借款状态
           //没有借款跳转借款页面
           //有借款进入借款状态页面，提现，还款、逾期
-          this.$http.get('/api/jhk/user/info').then(
+          this.$http.get('/h5/jhk/user/info').then(
             rep => {
               console.log(rep.data);
               if(rep.data.code==0){

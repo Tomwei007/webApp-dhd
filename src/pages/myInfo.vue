@@ -57,7 +57,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get('/api/auth/user/status').then(
+    this.$http.get('/h5/auth/user/status').then(
       rep => {
         console.log(rep.data);
         if (rep.data.code == 0) {
@@ -73,7 +73,7 @@ export default {
     save() {
       //console.log(this.$route.params);
       if (this.base_status == 1 && this.contact_status == 1 && this.job_status == 1) {
-        this.$http.post('/api/auth/user/submit').then(
+        this.$http.post('/h5/auth/user/submit').then(
           rep => {
             console.log(rep.data);
             if (rep.data.code == 0) {

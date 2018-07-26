@@ -53,10 +53,10 @@
     <li class="aui-list-item">
       <div class="aui-list-item-inner">
         <div class="aui-list-item-label">
-          银行全名
+          支行名称
         </div>
         <div class="aui-list-item-input">
-          <input type="text" placeholder="请输入银行全名" v-model="formData.bankName">
+          <input type="text" placeholder="例如:**支行" v-model="formData.bankName">
         </div>
       </div>
     </li>
@@ -114,7 +114,7 @@ export default {
   },
   mounted() {
     //获取银行列表数据
-    this.$http.get('/api/jhk/user/bank/alls',{}).then(
+    this.$http.get('/h5/jhk/user/bank/alls',{}).then(
       rep => {
         console.log(rep.data);
         this.banklists=rep.data;
@@ -139,7 +139,7 @@ export default {
     save(){
       //console.log(this.formData);
       //let data=this.formData;
-      this.$http.post('/api/jhk/user/bank',this.formData).then(
+      this.$http.post('/h5/jhk/user/bank',this.formData).then(
         rep => {
           if(rep.data.code==0){
             this.$vux.toast.show({

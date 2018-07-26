@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted(){
-    this.$http.get('/api/user/auth').then(
+    this.$http.get('/h5/user/auth').then(
       rep => {
         if (rep.data.code == 0) {
           //console.log(rep.data);
@@ -59,7 +59,7 @@ export default {
   components:{},
   methods:{
     save(){
-      this.$http.post('/api/user/audit').then(
+      this.$http.post('/h5/user/audit').then(
         rep => {
           //console.log(rep.data);
           if(rep.data.code==0){

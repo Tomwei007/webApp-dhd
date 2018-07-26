@@ -53,7 +53,7 @@ export default {
     //取下order_id
     let id=localStorage.order_id||JSON.parse(localStorage.userInfo).order_id;
     if(id){
-      this.$http.get('/api/order/loan_result?id='+id).then(
+      this.$http.get('/h5/order/loan_result?id='+id).then(
         rep => {
           //console.log(rep.data.detail);
           if(rep.data.code===0){

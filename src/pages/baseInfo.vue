@@ -124,7 +124,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get('/api/auth/user/base', {}).then(
+    this.$http.get('/h5/auth/user/base', {}).then(
       rep => {
         console.log(rep.data);
         if(rep.data.code==0){
@@ -156,7 +156,7 @@ export default {
       _this.userInfo.maritalStatus=_this.userInfo.marital_status;
       _this.userInfo.eduType=_this.userInfo.edu_type;
       _this.userInfo.carStatus=_this.userInfo.car_status;
-      this.$http.post('/api/auth/user/base',this.userInfo).then(
+      this.$http.post('/h5/auth/user/base',this.userInfo).then(
         rep => {
           console.log(rep.data);
           if(rep.data.code==1){

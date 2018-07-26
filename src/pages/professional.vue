@@ -71,7 +71,7 @@
             单位电话
           </div>
           <div class="aui-list-item-input">
-            <input type="text" placeholder="区号+号码" v-model="formData.companyTel" required>
+            <input type="text" placeholder="区号+号码（选填）" v-model="formData.companyTel">
           </div>
         </div>
       </li>
@@ -109,7 +109,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get('/api/auth/user/job', {}).then(
+    this.$http.get('/h5/auth/user/job', {}).then(
       rep => {
         console.log(rep.data);
         if (rep.data.code == 0) {
@@ -146,7 +146,7 @@ export default {
             address[1] = address[0];
           }
           this.formData.regionName = address[0] + "-" + address[1] + "-" + address[2];
-          this.$http.post('/api/auth/user/job', this.formData).then(
+          this.$http.post('/h5/auth/user/job', this.formData).then(
             rep => {
               console.log(rep.data);
               if (rep.data.code == 0) {

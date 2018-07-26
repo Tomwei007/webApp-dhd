@@ -109,7 +109,7 @@ export default {
             type:'text'
           })
         }else{
-          this.$http.post('/api/user/pay_password',{
+          this.$http.post('/h5/user/pay_password',{
             pwd:this.pwds
           }).then(
             rep => {
@@ -129,7 +129,7 @@ export default {
           type:'text'
         })
       }else{
-        this.$http.post('/api/jhk/order/signing',{
+        this.$http.post('/h5/jhk/order/signing',{
           days:this.$route.params.days,
           loan:this.$route.params.loan,
           bankId:this.$route.params.bankId,

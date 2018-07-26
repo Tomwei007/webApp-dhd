@@ -73,7 +73,7 @@ export default {
   },
   mounted(){
     let id=localStorage.order_id||JSON.parse(localStorage.userInfo).order_id;
-    this.$http.get('/api/jhk/order/contract?id='+id).then(
+    this.$http.get('/h5/jhk/order/contract?id='+id).then(
       rep => {
         console.log(rep.data.detail);
         if(rep.data.code===0){

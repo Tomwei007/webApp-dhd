@@ -58,12 +58,12 @@ export default {
     }
   },
   mounted(){
-    this.$http.get('/api/jhk/order/signing').then(
+    this.$http.get('/h5/jhk/order/signing').then(
       rep => {
         console.log(rep.data);
         if(rep.data.code==0){
           this.info=rep.data.detail;
-          this.$http.get('/api/jhk/user/bank/all',{}).then(
+          this.$http.get('/h5/jhk/user/bank/all',{}).then(
             rep => {
               this.banklists=rep.data.detail.bank_list;
               this.info.bankId=this.banklists[0].id;

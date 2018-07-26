@@ -47,7 +47,7 @@ export default {
   methods: {
     save(){
       let _this=this;
-      _this.$http.get('/api/jhk/user/info').then(
+      _this.$http.get('/h5/jhk/user/info').then(
         rep => {
           console.log(rep.data);
           if(rep.data.code==0){

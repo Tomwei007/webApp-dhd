@@ -98,7 +98,7 @@ export default {
     save() {
       //this.$router.push('/auditWaiting');
       //获取个人信息
-      this.$http.post('/api/jhk/order/loanApply', {
+      this.$http.post('/h5/jhk/order/loanApply', {
         loan: this.loan,
         days: this.days,
         usedFor: this.usedFor
@@ -107,7 +107,7 @@ export default {
           console.log(rep.data);
           if (rep.data.code == 0) {
             //this.$router.push('/auditWaiting');
-            this.$http.get('/api/user/auth').then(
+            this.$http.get('/h5/user/auth').then(
               rep => {
                 if (rep.data.code == 0) {
                   //console.log(rep.data);
@@ -142,7 +142,7 @@ export default {
       // )
     },
     getMoney() {
-      this.$http.post('/api/jhk/order/computeInterest', {
+      this.$http.post('/h5/jhk/order/computeInterest', {
         loan: this.loan,
         days: this.days
       }).then(

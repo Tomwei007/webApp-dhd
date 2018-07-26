@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted(){
-    this.$http.get('/api/jhk/user/info').then(
+    this.$http.get('/h5/jhk/user/info').then(
       rep => {
         //console.log(rep.data);
         if(rep.data.code==0){
@@ -52,7 +52,7 @@ export default {
   components:{},
   methods:{
     save(){
-      this.$http.get('/api/jhk/order/signing').then(
+      this.$http.get('/h5/jhk/order/signing').then(
         rep => {
           console.log(rep.data);
           if(rep.data.code==8){

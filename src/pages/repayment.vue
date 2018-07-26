@@ -48,7 +48,7 @@ export default {
   },
   mounted() {
     let order_id=localStorage.order_id||JSON.parse(localStorage.userInfo).order_id;
-    this.$http.post('/api/jhk/order/getSimpleContract',{
+    this.$http.post('/h5/jhk/order/getSimpleContract',{
       orderId:order_id
     }).then(
       rep => {

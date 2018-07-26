@@ -47,7 +47,7 @@ export default {
   components: {},
   methods: {
     save(){
-      this.$http.get('/api/jhk/user/info').then(
+      this.$http.get('/h5/jhk/user/info').then(
         rep =>{
           let status=rep.data.detail.status;
           if(status.scode===2){

@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted(){
-    this.$http.get('/api/jhk/user/bank/all',{}).then(
+    this.$http.get('/h5/jhk/user/bank/all',{}).then(
       rep => {
         console.log(rep.data);
         this.banklists=rep.data.detail.bank_list;

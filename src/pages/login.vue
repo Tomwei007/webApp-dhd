@@ -56,7 +56,7 @@ export default {
           }
         }, 1000);
         //请求数据
-        this.$http.post('/api/sms', {
+        this.$http.post('/h5/sms', {
           mobile: this.form.mobile
         }).then(rep => {
           console.log(rep.data);
@@ -79,7 +79,7 @@ export default {
           type: 'text'
         })
       } else {
-        this.$http.post('/api/signin', this.form).then(
+        this.$http.post('/h5/signin', this.form).then(
           rep => {
             console.log(rep.data);
             if(rep.data.code==0){
@@ -88,7 +88,7 @@ export default {
               cookie.set('p', phone, {
                 expires: 7
               })
-              this.$router.go("-1");
+              this.$router.push("/index");
             }else{
               this.$vux.toast.show({
                 text:rep.data.msg,

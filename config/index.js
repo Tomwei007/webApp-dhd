@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
+      '/h5': {
             target: 'http://39.106.190.235:8088', //
             changeOrigin: true,
             pathRewrite: {
-                '^/api': '/'
+                '^/h5': '/'
             }
         }
     },
@@ -50,7 +50,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'hStatic',
     assetsPublicPath: '/',
 
     /**

@@ -69,7 +69,7 @@ export default {
       } else {
         //this.show = false;
         var data = new FormData(document.getElementById("fileForm"));
-        this.$http.post('/api/auth/userid', data).then(
+        this.$http.post('/h5/auth/userid', data).then(
           rep => {
             //console.log(rep);
             if (rep.data.code == 0) {
