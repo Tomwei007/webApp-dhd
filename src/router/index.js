@@ -207,6 +207,14 @@ export default new Router({
       meta:{
         index:2
       }
+    },
+    {
+      path:'/uploadImg',
+      name:'uploadImg',
+      component: require('../pages/uploadImg').default,
+      meta:{
+        index:2
+      }
     }
 
   ]

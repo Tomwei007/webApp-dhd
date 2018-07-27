@@ -23,6 +23,9 @@
     <div class="btn-group">
       <div class="aui-btn aui-btn-block aui-btn-primary" @click="save()">去提现</div>
     </div>
+    <div class="btn-group" style="margin-top:0;padding-top:0;">
+      <div class="aui-btn aui-btn-block aui-btn-danger" @click="date()">要延期</div>
+    </div>
   </div>
 </div>
 </template>
@@ -49,7 +52,9 @@ export default {
       }
     )
   },
-  components:{},
+  components:{
+    //Confirm
+  },
   methods:{
     save(){
       this.$http.get('/h5/jhk/order/signing').then(
@@ -67,6 +72,16 @@ export default {
           }
         }
       )
+    },
+    date(){
+      this.$vux.confirm.show({
+        // 组件除show外的属性
+        title:'您确定要延期吗？',
+        content:'每次延期7天，费用200元',
+        onConfirm () {
+          console.log('确定');
+        }
+      })
     }
   }
 }

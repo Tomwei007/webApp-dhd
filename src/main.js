@@ -4,20 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
-import {AlertPlugin, ToastPlugin, LoadingPlugin, DatetimePlugin} from 'vux'
+import {AlertPlugin, ToastPlugin, LoadingPlugin, DatetimePlugin,ConfirmPlugin } from 'vux'
 
 Vue.use(AlertPlugin)
 Vue.use(ToastPlugin)
 Vue.use(LoadingPlugin)
 Vue.use(DatetimePlugin)
-
+Vue.use(ConfirmPlugin)
 Vue.use(VueResource);
+
 Vue.http.options.emulateJSON = true;
 Vue.http.options.headers = {
    //'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
   'Content-Type': 'application/json;charset=UTF-8'
 };
-
+//请求拦截器
 Vue.http.interceptors.push(function(request, next) {
   //request.method = 'post';
   this.$vux.loading.show({text: '加载中'})

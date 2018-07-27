@@ -51,34 +51,18 @@
       <ul class="clearfix">
         <li>
           <a href="javascript:;" @click="getUrl()">
-								<img src="../assets/img/product02.png"/>
+								<img src="../assets/img/pc-320-220-mi8.png"/>
 								<p>小米</p>
-								<p class="aui-ellipsis-1">红米note5全面屏</p>
-								<p class="money">¥1200</p>
+								<p class="aui-ellipsis-1">小米8 全面屏</p>
+								<p class="money">¥2699</p>
 							</a>
         </li>
         <li>
           <a href="javascript:;" @click="getUrl()">
-								<img src="../assets/img/product02.png"/>
+								<img src="../assets/img/mix2s320-220white.png"/>
 								<p>小米</p>
-								<p class="aui-ellipsis-1">红米note5全面屏</p>
-								<p class="money">¥1200</p>
-							</a>
-        </li>
-        <li>
-          <a href="javascript:;" @click="getUrl()">
-								<img src="../assets/img/product02.png"/>
-								<p>小米</p>
-								<p class="aui-ellipsis-1">红米note5全面屏</p>
-								<p class="money">¥1200</p>
-							</a>
-        </li>
-        <li>
-          <a href="javascript:;" @click="getUrl()">
-								<img src="../assets/img/product02.png"/>
-								<p>小米</p>
-								<p class="aui-ellipsis-1">红米note5全面屏</p>
-								<p class="money">¥1200</p>
+								<p class="aui-ellipsis-1">小米MIX 2S</p>
+								<p class="money">¥3299</p>
 							</a>
         </li>
       </ul>
